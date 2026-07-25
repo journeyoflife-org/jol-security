@@ -1,0 +1,54 @@
+name: Evidence Export
+on:
+  workflow_dispatch:
+    inputs:
+      audit_type:
+        description: 'Audit type'
+        required: true
+        type: choice
+        options:
+          - internal
+          - external
+      period_start:
+        description: 'Period start (YYYY-MM-DD)'
+        required: true
+        type: string
+      period_end:
+        description: 'Period end (YYYY-MM-DD)'
+        required: true
+        type: string
+
+jobs:
+  export:
+    name: Generate Evidence Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate repository
+        run: ./scripts/validate-local-repo.sh
+
+      - name: Check evidence manifest
+        run: ./scripts/evidence-manifest.sh
+
+      - name: Generate report
+        run: |
+          echo "# Evidence Export Report" > evidence-report.md
+          echo "" >> evidence-report.md
+          echo "- **Audit Type**: ${{ inputs.audit_type }}" >> evidence-report.md
+          echo "- **Period**: ${{ inputs.period_start }} to ${{ inputs.period_end }}" >> evidence-report.md
+          echo "- **Generated**: $(date -u)" >> evidence-report.md
+
+      - name: Package evidence
+        run: |
+          tar -czf evidence-${{ inputs.audit_type }}-$(date +%Y%m%d).tar.gz \
+            --exclude='.git' --exclude='.venv' --exclude='.idea' \
+            policies/ compliance/ procedures/ runbooks/ evidence-report.md
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidence-${{ inputs.audit_type }}
+          path: evidence-*.tar.gz
+          retention-days: 90

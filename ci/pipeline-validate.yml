@@ -1,0 +1,40 @@
+# CI Pipeline: Repository Validation
+# Validates repository structure, file integrity, and cross-references
+
+name: Validate Repository
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-structure:
+    name: Validate Repository Structure
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run structure validation
+        run: ./scripts/validate-local-repo.sh
+
+  validate-policies:
+    name: Validate Policy Documents
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run policy lint
+        run: ./scripts/policy-lint.sh
+
+  validate-references:
+    name: Validate Evidence References
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run evidence manifest check
+        run: ./scripts/evidence-manifest.sh

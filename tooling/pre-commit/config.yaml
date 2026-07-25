@@ -1,0 +1,54 @@
+# Pre-commit hooks configuration for jol-security
+# Install: pip install pre-commit && pre-commit install
+
+repos:
+  # General hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        args: [--markdown-linebreak-ext=md]
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+        args: ['--maxkb=1000']
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: check-case-conflict
+
+  # Markdown linting
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.39.0
+    hooks:
+      - id: markdownlint
+        args:
+          - --disable
+          - MD013  # Line length
+          - MD033  # Inline HTML
+
+  # YAML linting (hard gate - failures block commits)
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.35.1
+    hooks:
+      - id: yamllint
+        args: [-d, "{extends: default, rules: {line-length: {max: 200}, truthy: disable, document-start: disable, comments-indentation: disable}}"]
+
+  # Shell script checking
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+
+  # Custom: secrets scan
+  - repo: local
+    hooks:
+      - id: secrets-scan
+        name: Secrets scan
+        entry: ./scripts/secrets-scan.sh
+        language: script
+        pass_filenames: false
+      - id: policy-lint
+        name: Policy lint
+        entry: ./scripts/policy-lint.sh
+        language: script
+        pass_filenames: false

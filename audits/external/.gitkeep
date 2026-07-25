@@ -1,0 +1,20 @@
+# External Audits
+
+This directory stores external audit reports and third-party assessment results.
+
+## Access
+
+- Read: Security Lead, Compliance Officer
+- Write: Compliance Officer only
+
+## Naming Convention
+
+Files should follow the pattern: `external-audit-YYYY-MM-DD-[firm]-[scope].pdf`
+
+## Confidentiality
+
+External audit reports are classified as **Confidential**. Do not share outside the organization without Compliance Officer approval.
+
+## Retention
+
+All external audit reports are retained for 7 years per `policies/data-retention-policy.md`.

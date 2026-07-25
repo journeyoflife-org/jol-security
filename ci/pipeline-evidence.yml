@@ -1,0 +1,61 @@
+# CI Pipeline: Evidence Export
+# Generates evidence packages for audit readiness
+
+name: Evidence Export
+on:
+  workflow_dispatch:
+    inputs:
+      audit_type:
+        description: 'Audit type (internal/external)'
+        required: true
+        type: choice
+        options:
+          - internal
+          - external
+      period_start:
+        description: 'Audit period start (YYYY-MM-DD)'
+        required: true
+        type: string
+      period_end:
+        description: 'Audit period end (YYYY-MM-DD)'
+        required: true
+        type: string
+
+jobs:
+  generate-evidence-package:
+    name: Generate Evidence Package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate repository
+        run: ./scripts/validate-local-repo.sh
+
+      - name: Run evidence manifest check
+        run: ./scripts/evidence-manifest.sh
+
+      - name: Generate evidence report
+        run: |
+          echo "=== Evidence Export Report ===" > evidence-export-report.md
+          echo "" >> evidence-export-report.md
+          echo "**Audit Type**: ${{ inputs.audit_type }}" >> evidence-export-report.md
+          echo "**Period**: ${{ inputs.period_start }} to ${{ inputs.period_end }}" >> evidence-export-report.md
+          echo "**Generated**: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> evidence-export-report.md
+          echo "" >> evidence-export-report.md
+          echo "## Files Included" >> evidence-export-report.md
+          find . -name "*.md" -o -name "*.csv" -o -name "*.yml" | \
+            grep -v '.git/' | sort >> evidence-export-report.md
+
+      - name: Create evidence archive
+        run: |
+          tar -czf evidence-package-${{ inputs.audit_type }}-$(date +%Y%m%d).tar.gz \
+            --exclude='.git' --exclude='.venv' --exclude='.idea' \
+            policies/ compliance/ procedures/ runbooks/ evidence-export-report.md
+
+      - name: Upload evidence artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: evidence-package-${{ inputs.audit_type }}
+          path: evidence-package-*.tar.gz
+          retention-days: 90

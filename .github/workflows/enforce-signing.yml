@@ -1,0 +1,48 @@
+name: Enforce Commit Signing
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-signatures:
+    name: Verify Commit Signatures
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check PR commits are signed
+        if: github.event_name == 'pull_request'
+        run: |
+          UNSIGNED=0
+          for commit in $(git rev-list ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}); do
+            if ! git verify-commit "$commit" 2>/dev/null; then
+              echo "ERROR: Unsigned commit: $commit"
+              git log -1 --format="%H %s" "$commit"
+              UNSIGNED=$((UNSIGNED + 1))
+            fi
+          done
+          if [ "$UNSIGNED" -gt 0 ]; then
+            echo "::error::$UNSIGNED unsigned commit(s) found"
+            echo "All commits must be GPG-signed per signing policy"
+            exit 1
+          fi
+
+      - name: Check push commits are signed
+        if: github.event_name == 'push'
+        run: |
+          UNSIGNED=0
+          for commit in $(git rev-list HEAD~${{ github.event.commits_count }}..HEAD 2>/dev/null || git rev-list HEAD~1..HEAD); do
+            if ! git verify-commit "$commit" 2>/dev/null; then
+              echo "ERROR: Unsigned commit: $commit"
+              UNSIGNED=$((UNSIGNED + 1))
+            fi
+          done
+          if [ "$UNSIGNED" -gt 0 ]; then
+            echo "::error::$UNSIGNED unsigned commit(s) found in push"
+            exit 1
+          fi

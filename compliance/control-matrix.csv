@@ -1,0 +1,16 @@
+ControlID,ControlName,Category,Framework,Status,EvidenceReference,Owner,LastReviewed
+AC-1,Access Control Policy,Access Control,SOC2,Implemented,policies/access-control-policy.md,Security Lead,2026-01-15
+AC-2,Account Management,Access Control,SOC2,Implemented,audits/evidence-pointers/README.md,Security Lead,2026-01-15
+AC-3,Access Enforcement,Access Control,SOC2,Implemented,policies/access-control-policy.md,Security Lead,2026-01-15
+AC-4,Information Flow Enforcement,Access Control,SOC2,Implemented,diagrams/data-flow-overview.md,Security Lead,2026-01-15
+AC-5,Separation of Duties,Access Control,SOC2,Implemented,policies/access-control-policy.md,Security Lead,2026-01-15
+AU-1,Audit and Accountability,Audit,SOC2,Implemented,policies/logging-monitoring-policy.md,Security Lead,2026-01-15
+AU-2,Audit Events,Audit,SOC2,Implemented,policies/logging-monitoring-policy.md,Security Lead,2026-01-15
+CA-1,Security Assessments,Assessment,SOC2,Planned,,Compliance Officer,2026-01-15
+CM-1,Configuration Management,Configuration,SOC2,Implemented,ci/pipeline-security.yml,Security Lead,2026-01-15
+CP-1,Contingency Planning,Contingency,SOC2,Implemented,procedures/backup-restore-procedure.md,Security Lead,2026-01-15
+IA-1,Identification and Authentication,Identity,SOC2,Implemented,diagrams/identity-access-flow.md,Security Lead,2026-01-15
+IR-1,Incident Response,Incident Response,SOC2,Implemented,policies/incident-response-policy.md,Security Lead,2026-01-15
+RA-1,Risk Assessment,Risk,SOC2,Implemented,compliance/risk-register.md,Compliance Officer,2026-01-15
+SC-1,System and Communications Protection,Communications,SOC2,Implemented,policies/cryptography-policy.md,Security Lead,2026-01-15
+SI-1,System and Information Integrity,Integrity,SOC2,Implemented,policies/vulnerability-management-policy.md,Security Lead,2026-01-15

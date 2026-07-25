@@ -1,0 +1,50 @@
+# Governance Configuration for jol-security
+# This file defines the governance structure and review requirements
+
+governance:
+  repository: jol-security
+  organization: journeyoflife-org
+  version: "1.0.0"
+  effective_date: "2026-01-01"
+  review_cycle: quarterly
+
+owners:
+  security_lead:
+    email: security@journeyoflife.org
+    responsibilities:
+      - Approve security policy changes
+      - Oversee incident response
+      - Sign off on audit evidence
+  compliance_officer:
+    email: compliance@journeyoflife.org
+    responsibilities:
+      - Maintain compliance mapping
+      - Coordinate external audits
+      - Track remediation items
+
+review_requirements:
+  policy_changes:
+    min_reviewers: 2
+    required_approvals:
+      - security_lead
+    ci_checks:
+      - policy-lint
+      - secrets-scan
+  compliance_changes:
+    min_reviewers: 1
+    required_approvals:
+      - compliance_officer
+    ci_checks:
+      - validate-repo
+  procedure_changes:
+    min_reviewers: 1
+    ci_checks:
+      - policy-lint
+
+escalation:
+  - level: 1
+    contact: security@journeyoflife.org
+    response_time: 24h
+  - level: 2
+    contact: ciso@journeyoflife.org
+    response_time: 4h

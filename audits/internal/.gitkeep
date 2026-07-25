@@ -1,0 +1,16 @@
+# Internal Audits
+
+This directory stores internal audit reports and findings.
+
+## Access
+
+- Read: Security Lead, Compliance Officer
+- Write: Audit team members
+
+## Naming Convention
+
+Files should follow the pattern: `audit-YYYY-MM-DD-[scope].pdf`
+
+## Retention
+
+All audit reports are retained for 7 years per `policies/data-retention-policy.md`.

@@ -1,0 +1,22 @@
+* text=auto eol=lf
+
+# Documentation
+*.md text diff=markdown
+
+# Scripts
+*.sh text eol=lf
+
+# YAML
+*.yml text
+*.yaml text
+
+# CSV
+*.csv text
+
+# Python
+*.py text diff=python
+
+# Binary files
+*.pdf binary
+*.png binary
+*.jpg binary

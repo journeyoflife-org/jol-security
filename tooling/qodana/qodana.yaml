@@ -1,0 +1,19 @@
+# Qodana Configuration for jol-security
+# See: https://www.jetbrains.com/help/qodana/
+
+version: "1.0"
+profile:
+  name: qodana.recommended
+
+include:
+  - name: CheckDependencyLicenses
+
+exclude:
+  - name: all
+    paths:
+      - .venv/
+      - .idea/
+      - node_modules/
+
+bootstrap: |
+  echo "Qodana analysis for jol-security repository"

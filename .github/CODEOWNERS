@@ -1,0 +1,37 @@
+# CODEOWNERS for jol-security
+# Defines required reviewers for different areas of the repository
+# See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Global - Security Lead reviews everything by default
+* @journeyoflife-org/security-lead
+
+# Compliance mappings - Compliance Officer required
+/compliance/ @journeyoflife-org/compliance-officer
+
+# Security policies - Security Lead required
+/policies/ @journeyoflife-org/security-lead
+
+# Procedures - Security Lead required
+/procedures/ @journeyoflife-org/security-lead
+
+# Runbooks - Security Lead required
+/runbooks/ @journeyoflife-org/security-lead
+
+# CI/CD pipelines - Repository maintainers
+/ci/ @journeyoflife-org/security-lead
+/.github/workflows/ @journeyoflife-org/security-lead
+
+# Scripts - Security Lead
+/scripts/ @journeyoflife-org/security-lead
+
+# Tests - Security Lead
+/tests/ @journeyoflife-org/security-lead
+
+# Governance configuration - both owners
+/governance.yml @journeyoflife-org/security-lead @journeyoflife-org/compliance-officer
+
+# Templates - Compliance Officer
+/templates/ @journeyoflife-org/compliance-officer
+
+# Audit artifacts - Compliance Officer
+/audits/ @journeyoflife-org/compliance-officer
