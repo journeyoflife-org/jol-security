@@ -3,35 +3,35 @@
 # See: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Global - Security Lead reviews everything by default
-* @journeyoflife-org/security-lead
+*                                   @journeyoflife-org/security
 
 # Compliance mappings - Compliance Officer required
-/compliance/ @journeyoflife-org/compliance-officer
+/compliance/                        @journeyoflife-org/security
 
 # Security policies - Security Lead required
-/policies/ @journeyoflife-org/security-lead
+/policies/                          @journeyoflife-org/security
 
 # Procedures - Security Lead required
-/procedures/ @journeyoflife-org/security-lead
+/procedures/                        @journeyoflife-org/security
 
 # Runbooks - Security Lead required
-/runbooks/ @journeyoflife-org/security-lead
+/runbooks/                          @journeyoflife-org/security
 
 # CI/CD pipelines - Repository maintainers
-/ci/ @journeyoflife-org/security-lead
-/.github/workflows/ @journeyoflife-org/security-lead
+/ci/                                @journeyoflife-org/security
+/.github/workflows/                 @journeyoflife-org/security
 
 # Scripts - Security Lead
-/scripts/ @journeyoflife-org/security-lead
+/scripts/                           @journeyoflife-org/security
 
 # Tests - Security Lead
-/tests/ @journeyoflife-org/security-lead
+/tests/                             @journeyoflife-org/security
 
 # Governance configuration - both owners
-/governance.yml @journeyoflife-org/security-lead @journeyoflife-org/compliance-officer
+/governance.yml                     @journeyoflife-org/security
 
 # Templates - Compliance Officer
-/templates/ @journeyoflife-org/compliance-officer
+/templates/                         @journeyoflife-org/security
 
 # Audit artifacts - Compliance Officer
-/audits/ @journeyoflife-org/compliance-officer
+/audits/                            @journeyoflife-org/security
