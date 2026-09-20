@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
       - name: Validate structure
         run: ./scripts/validate-local-repo.sh
@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
       - name: Run policy lint
         run: ./scripts/policy-lint.sh
@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
       - name: Run evidence manifest check
         run: ./scripts/evidence-manifest.sh
@@ -44,10 +44,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
       - name: Lint markdown files
-        uses: DavidAnson/markdownlint-cli2-action@v16
+uses: DavidAnson/markdownlint-cli2-action@b4c9feab76d8025d1e83c653fa3990936df0e6c8  # v16
         with:
           globs: '**/*.md'
 
@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
 
       - name: Install yamllint
         run: pip install yamllint
