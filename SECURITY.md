@@ -5,12 +5,14 @@
 If you believe you have found a security vulnerability in `jol-security` or in any repository or control document governed by it, report it privately and do not use public issues, pull requests, or discussions.
 
 Preferred reporting path:
+
 - **GitHub Security Advisory**: use the repository's **Security** tab and select **Report a vulnerability** if private reporting is enabled.
 - If private reporting is not available, send a confidential report to the designated security contact listed below.
 
 ## Do Not Use Public Channels
 
 Do not report vulnerabilities through:
+
 - Public GitHub issues
 - Pull requests
 - Discussions
@@ -41,6 +43,7 @@ We ask reporters to keep the report confidential until the issue is investigated
 ## Triage Expectations
 
 We aim to:
+
 1. Acknowledge receipt quickly
 2. Validate the report
 3. Classify severity
@@ -62,6 +65,7 @@ High-risk issues involving exposure of secrets, access control failure, unauthor
 ## Scope
 
 This policy applies to:
+
 - `jol-security` repository
 - Security policies and procedures maintained by this repository
 - Validation and compliance automation referenced by this repository
@@ -80,14 +84,15 @@ It does not authorize disclosure of production secrets, personal data, or protec
 
 | Role                      | Contact                          |
 |---------------------------|----------------------------------|
-| Primary security contact  | security@journeyoflife.org       |
-| Backup security contact   | ciso@journeyoflife.org           |
-| Incident Response Team    | incident@journeyoflife.org       |
-| Privacy / DPO contact     | privacy@journeyoflife.org        |
+| Primary security contact  | <security@journeyoflife.org>       |
+| Backup security contact   | <ciso@journeyoflife.org>           |
+| Incident Response Team    | <incident@journeyoflife.org>       |
+| Privacy / DPO contact     | <privacy@journeyoflife.org>        |
 
 ## Safe Handling
 
 If the issue appears to involve:
+
 - A leaked secret
 - An exposed credential
 - A live access control bypass
@@ -121,6 +126,7 @@ We will credit reporters in release notes unless anonymity is requested.
 ## Compliance Integration
 
 This repository is compliance-driven. Security issues that affect confidentiality, integrity, availability, or regulatory obligations may also trigger:
+
 - Incident response per `policies/incident-response-policy.md`
 - Breach notification per `procedures/breach-notification-procedure.md`
 - Privacy review
