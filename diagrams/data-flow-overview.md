@@ -6,7 +6,7 @@ This diagram illustrates how data flows through the jol-security system, includi
 
 ## Data Flow Diagram
 
-```
+```text
 ┌──────────────┐     ┌──────────────────┐     ┌──────────────────┐
 │  Policy       │     │  Compliance      │     │  Audit           │
 │  Authors      │     │  Officers        │     │  Teams           │

@@ -12,6 +12,7 @@ This procedure defines the process for notifying affected parties and regulatory
 ## Trigger Conditions
 
 This procedure is activated when:
+
 - A confirmed breach involving personal data (PII/PHI) is identified
 - A breach affects more than 500 individuals
 - Regulatory notification is required by applicable law

@@ -6,7 +6,7 @@ The jol-security repository serves as the central governance, risk, and complian
 
 ## High-Level Architecture
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────┐
 │                  jol-security (GRC Hub)                      │
 │                                                             │

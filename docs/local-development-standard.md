@@ -30,6 +30,7 @@ pre-commit install
 ### Making Changes
 
 1. Create a feature branch:
+
    ```bash
    git checkout -b feature/your-change-name
    ```
@@ -37,6 +38,7 @@ pre-commit install
 2. Make your changes following the structure conventions
 
 3. Validate locally before committing:
+
    ```bash
    ./scripts/validate-local-repo.sh
    ./scripts/secrets-scan.sh
@@ -44,12 +46,14 @@ pre-commit install
    ```
 
 4. Commit with a signed commit:
+
    ```bash
    git add .
    git commit -S -m "Add/Update/Remove: description"
    ```
 
 5. Push and create a pull request:
+
    ```bash
    git push -u origin feature/your-change-name
    gh pr create

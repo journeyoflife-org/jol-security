@@ -62,7 +62,7 @@
 
 ## Communication Template
 
-```
+```text
 EMERGENCY CHANGE NOTIFICATION
 Incident: [ID]
 Change: [Description]

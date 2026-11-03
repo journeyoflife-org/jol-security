@@ -6,7 +6,7 @@ This diagram illustrates the identity and access management flow for users and s
 
 ## Authentication Flow
 
-```
+```text
 ┌──────────┐                                    ┌──────────────────┐
 │  User /   │                                    │  Identity        │
 │  Service  │                                    │  Provider (IdP)  │
@@ -63,7 +63,7 @@ This diagram illustrates the identity and access management flow for users and s
 
 ## Service Account Flow
 
-```
+```text
 Service ──▶ API Key ──▶ API Gateway ──▶ Rate Limit ──▶ Auth Check ──▶ Access
 ```
 
