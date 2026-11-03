@@ -18,6 +18,7 @@ The format follows a human-readable changelog style with reverse chronological r
 
 ### Fixed
 
+- Fix `Verify Commit Signatures` check: it ran raw `git verify-commit` with no key imported into the runner, so it false-failed on every commit including GitHub-verified ones; replaced with GitHub's authoritative `commit.verification.verified` verdict, check name and triggers preserved.
 - Resolve all markdownlint-cli2 violations flagged by CI (MD022/MD031/MD032/MD034 auto-fixed; MD040 text language on 11 plain fences; MD024 siblings_only for Keep-a-Changelog headings; MD041 PR-template H1).
 - Corrections to broken links, inaccurate references, or malformed evidence metadata
 - Minor editorial or structural corrections to repository documentation
