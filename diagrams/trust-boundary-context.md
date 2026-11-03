@@ -6,7 +6,7 @@ This diagram defines the trust boundaries for the jol-security system and its in
 
 ## Trust Zones
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────┐
 │                        PUBLIC INTERNET                              │
 │                                                                     │

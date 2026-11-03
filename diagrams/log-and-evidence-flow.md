@@ -6,7 +6,7 @@ This diagram illustrates how security logs and audit evidence flow through the s
 
 ## Log Flow Architecture
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────────────┐
 │                        LOG SOURCES                                  │
 │                                                                     │
@@ -49,7 +49,7 @@ This diagram illustrates how security logs and audit evidence flow through the s
 
 ## Evidence Flow
 
-```
+```text
 Incident / Audit Trigger
         │
         ▼

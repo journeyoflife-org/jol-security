@@ -35,6 +35,7 @@
 ### Step 3: Prioritization
 
 Apply severity from `policies/incident-response-policy.md`:
+
 - **P1**: Active breach, data exfiltration → Immediate escalation
 - **P2**: Confirmed compromise → Escalate within 1 hour
 - **P3**: Suspicious activity → Investigate within 4 hours

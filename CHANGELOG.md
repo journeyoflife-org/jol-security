@@ -7,23 +7,29 @@ The format follows a human-readable changelog style with reverse chronological r
 ## [Unreleased]
 
 ### Added
+
 - Draft updates to security policies, procedures, and compliance mappings
 - New evidence pointers, validation checks, or governance artifacts pending review
 
 ### Changed
+
 - Refinements to control wording, ownership, review cadence, or repository governance
 - Documentation improvements that do not alter the underlying control intent
 
 ### Fixed
+
+- Resolve all markdownlint-cli2 violations flagged by CI (MD022/MD031/MD032/MD034 auto-fixed; MD040 text language on 11 plain fences; MD024 siblings_only for Keep-a-Changelog headings; MD041 PR-template H1).
 - Corrections to broken links, inaccurate references, or malformed evidence metadata
 - Minor editorial or structural corrections to repository documentation
 
 ### Security
+
 - Any security-related change not yet released should be listed here with a clear summary of the impact and the review path
 
 ## [1.0.0] - 2026-07-25
 
 ### Added
+
 - Initial production-grade structure for the `jol-security` repository
 - Compliance-focused documentation for SOC 2, GDPR, and ISO 27001 alignment
 - Repository governance, evidence handling guidance, and local validation expectations
@@ -41,13 +47,16 @@ The format follows a human-readable changelog style with reverse chronological r
 - Pull request template with governance checklist
 
 ### Changed
+
 - Established the repository as a controlled system of record for security and compliance material
 - Standardized repository boundaries to exclude secrets, production data, and uncontrolled operational exports
 
 ### Fixed
+
 - N/A for the initial release
 
 ### Security
+
 - Introduced baseline security governance for repository access, commit discipline, and evidence handling
 - Defined reporting and escalation expectations for security issues and compliance exceptions
 - Enforced GPG-signed commits and pull-request-only change workflow

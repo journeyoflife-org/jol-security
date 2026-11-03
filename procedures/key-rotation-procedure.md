@@ -47,6 +47,7 @@ This procedure provides instructions for rotating cryptographic keys to maintain
 ### Emergency Rotation
 
 If a key is suspected compromised:
+
 1. Generate and deploy new key immediately
 2. Revoke compromised key
 3. Investigate potential data exposure
@@ -55,6 +56,7 @@ If a key is suspected compromised:
 ## Rollback
 
 If issues arise after rotation:
+
 1. Revert to previous key from secure backup
 2. Investigate root cause of failure
 3. Document issue and plan corrective action

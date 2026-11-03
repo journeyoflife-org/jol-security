@@ -28,16 +28,19 @@ This repository is classified as **Internal** by default.
 ## Handling Requirements
 
 ### Internal
+
 - Store in organization-controlled repositories
 - Do not share externally without approval
 
 ### Confidential
+
 - Encrypt at rest (AES-256 minimum)
 - Restrict access to authorized personnel
 - Log all access events
 - Do not include in public communications
 
 ### Restricted
+
 - All Confidential requirements plus:
 - Dual-authorization for access
 - Quarterly access review
@@ -47,7 +50,7 @@ This repository is classified as **Internal** by default.
 
 Documents should include a classification header:
 
-```
+```text
 Classification: [Level]
 ```
 

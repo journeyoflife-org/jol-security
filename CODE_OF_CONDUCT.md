@@ -68,9 +68,9 @@ If you experience or witness conduct that violates this Code of Conduct, report 
 
 | Channel                     | Contact                          |
 |-----------------------------|----------------------------------|
-| Primary conduct contact     | conduct@journeyoflife.org        |
-| Security-related conduct    | security@journeyoflife.org       |
-| Escalation                  | ciso@journeyoflife.org           |
+| Primary conduct contact     | <conduct@journeyoflife.org>        |
+| Security-related conduct    | <security@journeyoflife.org>       |
+| Escalation                  | <ciso@journeyoflife.org>           |
 
 ### Reports Should Include
 
@@ -89,6 +89,7 @@ Do not repost moderation records publicly unless explicitly authorized.
 ## Scope
 
 This Code of Conduct applies to:
+
 - Issues, pull requests, and code review comments
 - Repository discussions and maintainer communications
 - Related governance, security, and compliance collaboration

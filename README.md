@@ -7,6 +7,7 @@
 This repository is the governed source of truth for security and compliance documentation across the Journey of Life platform. It is intended for policies, procedures, control mappings, validation helpers, and evidence metadata only.
 
 It **must not** contain:
+
 - Production secrets
 - Private keys or credentials
 - Raw personal data
@@ -38,6 +39,7 @@ This repository supports three overlapping control frameworks:
 ### SOC 2
 
 Focus areas include:
+
 - Access control
 - Change management
 - Logging and monitoring
@@ -47,6 +49,7 @@ Focus areas include:
 ### GDPR
 
 Focus areas include:
+
 - Data minimization
 - Purpose limitation
 - Retention and deletion discipline
@@ -57,6 +60,7 @@ Focus areas include:
 ### ISO 27001
 
 Focus areas include:
+
 - ISMS governance
 - Risk treatment and exception handling
 - Control ownership
@@ -67,7 +71,7 @@ If a control cannot be traced to an owner, procedure, and evidence path, it is *
 
 ## Repository Structure
 
-```
+```text
 jol-security/
 ├── compliance/          Control matrix, scope, risk register, evidence catalogue
 ├── policies/            Approved security and privacy policies
@@ -147,6 +151,7 @@ Validation failures **must** be fixed before merge. Exceptions require explicit 
 ## Evidence Handling
 
 Evidence should be stored outside the repository in an access-controlled, immutable location. This repository should contain only:
+
 - Evidence references
 - Metadata manifests
 - Control identifiers
@@ -166,6 +171,7 @@ Evidence should be stored outside the repository in an access-controlled, immuta
 Security incidents must follow the documented incident response process (`policies/incident-response-policy.md`).
 
 The process includes:
+
 1. **Triage** and severity classification (P1-P4)
 2. **Containment** and eradication
 3. **Preservation** of logs and evidence
@@ -180,9 +186,9 @@ If personal data is involved, GDPR notification timing must be treated as **urge
 
 | Role                  | Contact                        |
 |-----------------------|--------------------------------|
-| Security Owner        | security@journeyoflife.org     |
-| Compliance Owner      | compliance@journeyoflife.org   |
-| Privacy / DPO Contact | privacy@journeyoflife.org      |
+| Security Owner        | <security@journeyoflife.org>     |
+| Compliance Owner      | <compliance@journeyoflife.org>   |
+| Privacy / DPO Contact | <privacy@journeyoflife.org>      |
 | Repository Maintainers| See `CODEOWNERS` (when configured) |
 
 If any ownership field is missing, the repository is **incomplete for audit purposes**.
@@ -190,6 +196,7 @@ If any ownership field is missing, the repository is **incomplete for audit purp
 ## Change Control
 
 Every change must include:
+
 - A clear purpose
 - A linked policy, procedure, or control reference
 - The expected impact
@@ -205,6 +212,7 @@ Emergency changes should be rare, documented, and reviewed after implementation.
 Use the dedicated security reporting process defined in [SECURITY.md](SECURITY.md). GitHub recommends linking to the security policy from the README for discoverability.
 
 Preferred reporting path:
+
 - **GitHub Security Advisory**: Use the repository's **Security** tab → **Report a vulnerability**
 - **Email**: `security@journeyoflife.org`
 
@@ -252,5 +260,5 @@ See [LICENSE](LICENSE) for license details.
 ---
 
 **Classification**: Internal
-**Repository**: https://github.com/journeyoflife-org/jol-security
-**Organization**: https://github.com/journeyoflife-org
+**Repository**: <https://github.com/journeyoflife-org/jol-security>
+**Organization**: <https://github.com/journeyoflife-org>

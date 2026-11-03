@@ -20,7 +20,7 @@ This document defines the operational and organizational boundaries of the jol-s
 
 ## Relationship to Other Repositories
 
-```
+```text
 jol-security (Governance & Compliance)
     │
     ├──▶ Application Repos (follow secure-development-policy)
