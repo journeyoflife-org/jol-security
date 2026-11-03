@@ -18,6 +18,7 @@ The format follows a human-readable changelog style with reverse chronological r
 
 ### Fixed
 
+- Fix `Scan for Secrets`: gitleaks-action v2 now demands a paid `GITLEAKS_LICENSE` and errored without scanning anything; replaced with the free gitleaks engine (pinned v8.30.1, SHA256-verified download) run directly over full history. The org's `secrets-scan.sh` step and the `Scan for Secrets` job name are unchanged.
 - Fix `Verify Commit Signatures` check: it ran raw `git verify-commit` with no key imported into the runner, so it false-failed on every commit including GitHub-verified ones; replaced with GitHub's authoritative `commit.verification.verified` verdict, check name and triggers preserved.
 - Resolve all markdownlint-cli2 violations flagged by CI (MD022/MD031/MD032/MD034 auto-fixed; MD040 text language on 11 plain fences; MD024 siblings_only for Keep-a-Changelog headings; MD041 PR-template H1).
 - Corrections to broken links, inaccurate references, or malformed evidence metadata
