@@ -7,45 +7,43 @@ on:
 
 permissions:
   contents: read
+  pull-requests: read
 
 jobs:
   check-signatures:
     name: Verify Commit Signatures
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
-        with:
-          fetch-depth: 0
-
-      - name: Check PR commits are signed
+      - name: Verify PR commits are signed (GitHub's own cryptographic check)
         if: github.event_name == 'pull_request'
         run: |
-          UNSIGNED=0
-          for commit in $(git rev-list ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}); do
-            if ! git verify-commit "$commit" 2>/dev/null; then
-              echo "ERROR: Unsigned commit: $commit"
-              git log -1 --format="%H %s" "$commit"
-              UNSIGNED=$((UNSIGNED + 1))
-            fi
-          done
-          if [ "$UNSIGNED" -gt 0 ]; then
-            echo "::error::$UNSIGNED unsigned commit(s) found"
-            echo "All commits must be GPG-signed per signing policy"
+          BAD=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${{ github.event.pull_request.number }}/commits?per_page=100" \
+            --paginate \
+            --jq '.[] | select(.commit.verification.verified != true) | "  \(.sha[0:8]) reason=\(.commit.verification.reason // "n/a") committer=\(.commit.committer.name)"')
+          if [ -n "${BAD}" ]; then
+            echo "::error::These PR commits are not cryptographically verified by GitHub:"
+            printf '%s\n' "${BAD}"
+            echo 'Sign with: git commit -S  (key registered to the author account).'
             exit 1
           fi
+          echo 'PASS: every PR commit is verified by GitHub.'
 
-      - name: Check push commits are signed
+      - name: Verify push commits are signed (GitHub's own cryptographic check)
         if: github.event_name == 'push'
         run: |
-          UNSIGNED=0
-          for commit in $(git rev-list HEAD~${{ github.event.commits_count }}..HEAD 2>/dev/null || git rev-list HEAD~1..HEAD); do
-            if ! git verify-commit "$commit" 2>/dev/null; then
-              echo "ERROR: Unsigned commit: $commit"
-              UNSIGNED=$((UNSIGNED + 1))
+          FAIL=0
+          SHAS=$(printf '%s\n' '${{ toJSON(github.event.commits[*].id) }}' | grep -Eo '[0-9a-f]{40}')
+          SHAS="${SHAS}
+          ${{ github.sha }}"
+          for sha in $(printf '%s\n' "${SHAS}" | grep -Eo '[0-9a-f]{40}' | sort -u); do
+            VERIFIED=$(gh api "repos/${GITHUB_REPOSITORY}/commits/${sha}" --jq '.commit.verification.verified')
+            if [ "${VERIFIED}" != "true" ]; then
+              REASON=$(gh api "repos/${GITHUB_REPOSITORY}/commits/${sha}" --jq '.commit.verification.reason // "n/a"')
+              echo "::error::Unverified push commit ${sha:0:8} (reason=${REASON})"
+              FAIL=1
             fi
           done
-          if [ "$UNSIGNED" -gt 0 ]; then
-            echo "::error::$UNSIGNED unsigned commit(s) found in push"
-            exit 1
-          fi
+          if [ "${FAIL}" = "0" ]; then echo 'PASS: every push commit is verified by GitHub.'; fi
+          exit "${FAIL}"
